@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>薄弱体质项目训练处方 · 体育教学辅助软件</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="badge">体育备课 · 体质提升工具</div>
+      <h1>薄弱项目<em>训练处方</em>系统</h1>
+      <p class="sub">针对 <b>跳绳 · 跳远 · 50 米跑 · 投掷实心球</b> 四大体质测试薄弱项，用 8 类常用器材开出可直接上课的训练处方</p>
+    </div>
+    <div class="hero-art" id="heroArt"></div>
+  </div>
+  <div class="hero-actions">
+    <button class="btn primary" onclick="scrollToId('planner')">生成训练方案</button>
+    <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main id="main"></main>
+
+<section class="planner" id="planner">
+  <div class="sec-title">
+    <span class="sec-num">智能排课</span>
+    <h2>训练方案生成器</h2>
+    <p>勾选本次要突破的薄弱项目，自动生成一节课的训练安排表，可直接打印下发。</p>
+  </div>
+
+  <div class="planner-form">
+    <div class="form-card">
+      <h3>1. 选择薄弱项目</h3>
+      <div class="check-wrap" id="planProjects"></div>
+    </div>
+    <div class="form-card">
+      <h3>2. 课程参数</h3>
+      <div class="form-row">
+        <label>学段</label>
+        <select id="planStage">
+          <option value="小学（1-2年级）">小学（1-2 年级）</option>
+          <option value="小学（3-4年级）" selected>小学（3-4 年级）</option>
+          <option value="小学（5-6年级）">小学（5-6 年级）</option>
+          <option value="初中">初中</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>课时长</label>
+        <select id="planMin">
+          <option value="30">30 分钟（社团/大课间）</option>
+          <option value="40" selected>40 分钟（常规体育课）</option>
+          <option value="60">60 分钟（训练课）</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>学练水平</label>
+        <select id="planLevel">
+          <option value="初学">初学（动作建立阶段）</option>
+          <option value="提高" selected>提高（技术巩固阶段）</option>
+          <option value="冲刺">冲刺（成绩突破阶段）</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>周期</label>
+        <select id="planWeek">
+          <option value="4">4 周（考前突击）</option>
+          <option value="8" selected>8 周（学期常态）</option>
+          <option value="12">12 周（长期提升）</option>
+        </select>
+      </div>
+      <button class="btn primary block" onclick="buildPlan()">生成训练方案</button>
+    </div>
+  </div>
+
+  <div class="plan-out" id="planOut">
+    <div class="plan-empty">👈 选择项目后点击「生成训练方案」</div>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>薄弱项目训练处方系统 · 插图为卡通动作示意，可直接打印作为教学挂图使用</p>
+</footer>
+
+<div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+  <div class="modal-card" id="modalCard"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
